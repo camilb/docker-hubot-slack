@@ -24,9 +24,13 @@ RUN yo hubot --name="Hubot" --defaults
 # Install slack adapter
 RUN npm install hubot-slack --save
 
+#Install Redmine adapter
+RUN npm install hubot-redmine --save
+
 # Install cleverbot
 RUN npm install cleverbot-node --save
 ADD scripts/cleverbot.coffee ${BOTDIR}/scripts/cleverbot.coffee
+ADD scripts/cleverbot.coffee ${BOTDIR}/scripts/credmine.coffee
 
 # Entrypoint
 ENTRYPOINT ["/bin/sh", "-c", "cd ${BOTDIR} && bin/hubot --adapter slack"]
